@@ -47,6 +47,12 @@
                 }
               },
               {
+                "variable": "tradeOwnerNames",
+                "value": {
+                  "path": "$.additionalDetail.ownerNames"
+                }
+              },
+              {
                 "variable": "tradeOwnerContact",
                 "value": {
                   "path": "$.tradeLicenseDetail.owners[0].mobileNumber"
@@ -102,6 +108,12 @@
                   "required": true,
                   "prefix": "TRADELICENSE_TRADETYPE",
                   "module": "rainmaker-tl"
+                }
+              },
+              {
+                "variable": "tradeTypes",
+                "value": {
+                  "path": "$.additionalDetail.tradeTypes"
                 }
               },
               {
@@ -398,6 +410,14 @@
                 "apiRequest": null,
                 "responseMapping": [
                   {
+                    "variable": "ulb-name",
+                    "value": "$.MdmsRes.tenant.tenants[0].name"
+                  },
+                  {
+                    "variable": "ulb-grade",
+                    "value": "$.MdmsRes.tenant.tenants[0].city.ulbGrade"
+                  },
+                  {
                     "variable": "ulb-address",
                     "value": "$.MdmsRes.tenant.tenants[0].address"
                   },
@@ -432,19 +452,6 @@
                     "variable": "recieptDate",
                     "value": "$.Payments[0].paymentDetails[0].receiptDate",
                     "type": "date"
-                  }
-                ]
-              },
-              {
-                "path": "http://egov-filestore:8080/filestore/v1/files/url",
-                "queryParam": "tenantId=od,fileStoreIds=$.tradeLicenseDetail.applicationDocuments[?(@.documentType== 'OWNERPHOTO')].fileStoreId",
-                "apiRequest": null,
-                "requesttype": "GET",
-                "responseMapping": [
-                  {
-                    "variable": "userpic",
-                    "value": "$.fileStoreIds[0].url",
-                    "type": "image"
                   }
                 ]
               },

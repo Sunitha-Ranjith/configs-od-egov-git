@@ -1,6 +1,6 @@
 {
-  "key": "fsm-receipt",
-  "documentType": "FSM_RECEIPT",
+  "key": "mr-receipt",
+  "documentType": "MR_RECEIPT",
   "DataConfigs": {
     "moduleName": "rainmaker-common",
     "version": "1.0.0",
@@ -151,7 +151,7 @@
               {
                 "variable": "consumer_id",
                 "value": {
-                  "path": "PDF_STATIC_LABEL_FSM_RECEIPT_CONSUMER_ID"
+                  "path": "PDF_STATIC_LABEL_CONSOLIDATED_RECEIPT_CONSUMER_ID"
                 },
                 "type": "label",
                 "localisation": {
@@ -163,7 +163,7 @@
               {
                 "variable": "payment_date",
                 "value": {
-                  "path": "PDF_STATIC_LABEL_FSM_RECEIPT_PAYMENT_DATE"
+                  "path": "PDF_STATIC_LABEL_CONSOLIDATED_RECEIPT_PAYMENT_DATE"
                 },
                 "type": "label",
                 "localisation": {
@@ -175,7 +175,7 @@
               {
                 "variable": "payer_name",
                 "value": {
-                  "path": "PDF_STATIC_LABEL_FSM_RECEIPT_PAYER_NAME"
+                  "path": "PDF_STATIC_LABEL_CONSOLIDATED_RECEIPT_PAYER_NAME"
                 },
                 "type": "label",
                 "localisation": {
@@ -235,7 +235,7 @@
               {
                 "variable": "paid_amount",
                 "value": {
-                  "path": "PDF_STATIC_LABEL_FSM_RECEIPT_PAID_AMOUNT"
+                  "path": "PDF_STATIC_LABEL_CONSOLIDATED_RECEIPT_PAID_AMOUNT"
                 },
                 "type": "label",
                 "localisation": {
@@ -271,7 +271,7 @@
               {
                 "variable": "payment_mode",
                 "value": {
-                  "path": "PDF_STATIC_LABEL_FSM_RECEIPT_PAYMENT_MODE"
+                  "path": "PDF_STATIC_LABEL_CONSOLIDATED_RECEIPT_PAYMENT_MODE"
                 },
                 "type": "label",
                 "localisation": {
@@ -331,7 +331,7 @@
               {
                 "variable": "commissioner/eo",
                 "value": {
-                  "path": "PDF_STATIC_LABEL_FSM_RECEIPT_COMMISSIONER_EO"
+                  "path": "PDF_STATIC_LABEL_CONSOLIDATED_RECEIPT_COMMISSIONER_EO"
                 },
                 "type": "label",
                 "localisation": {
@@ -482,6 +482,10 @@
                 "apiRequest": null,
                 "responseMapping": [
                   {
+                    "variable": "ulb_grade",
+                    "value": "$.MdmsRes.tenant.tenants[0].city.ulbGrade"
+                  },
+                  {
                     "variable": "address",
                     "value": "$.MdmsRes.tenant.tenants[0].address"
                   },
@@ -498,11 +502,6 @@
                     "value": "$.MdmsRes.tenant.tenants[0].emailId"
                   },
                   {
-                    "variable": "logoImage",
-                    "value": "$.MdmsRes.tenant.tenants[0].logoId",
-                    "type": "image"
-                  },
-                  {
                     "variable": "logo-header",
                     "value": "$.MdmsRes.tenant.tenants[0].code",
                     "localisation": {
@@ -510,18 +509,41 @@
                       "prefix": "TENANT_TENANTS",
                       "module": "rainmaker-common"
                     }
-                  },
-                   {
-                      "variable": "ulbgrade",
-                      "value": "$.MdmsRes.tenant.tenants[0].city.ulbGrade",
-                      "type": "label",
-                      "localisation": {
-                        "required": true,
-                        "prefix": "ULBGRADE",
-                        "module": "rainmaker-common"
-                      }
                   }
                 ]
+              },
+              {
+                "variable": "variable12",
+                "value": [
+                  {
+                    "disclaimer": "PDF_STATIC_LABEL_CONSOLIDATED_RECEIPT_DISCLAIMER_1",
+                    "order": "1."
+                  },
+                  {
+                    "disclaimer": "PDF_STATIC_LABEL_CONSOLIDATED_RECEIPT_DISCLAIMER_3",
+                    "order": "2."
+                  },
+                  {
+                    "disclaimer": "PDF_STATIC_LABEL_CONSOLIDATED_RECEIPT_DISCLAIMER_4",
+                    "order": "3."
+                  }
+                ],
+                "type": "array",
+                "format": {
+                  "type": "string",
+                  "scema": [
+                    {
+                      "variable": "disclaimerContent",
+                      "value": "disclaimer",
+                      "type": "string",
+                      "localisation": {
+                        "required": true,
+                        "prefix": null,
+                        "module": "rainmaker-common"
+                      }
+                    }
+                  ]
+                }
               },
               {
                 "path": "http://egov-mdms-service:8080/egov-mdms-service/v1/_get",

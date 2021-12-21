@@ -17,21 +17,15 @@
                 "type": "image"
               },
               {
-                "variable": "tradeLicenseNo",
+                "variable": "mrNumber",
                 "value": {
-                  "path": "$.licenseNumber"
+                  "path": "$.mrNumber"
                 }
               },
               {
                 "variable": "applicationNo",
                 "value": {
                   "path": "$.applicationNumber"
-                }
-              },
-              {
-                "variable": "financialYear",
-                "value": {
-                  "path": "$.financialYear"
                 }
               },
               {
@@ -140,7 +134,16 @@
                 "value": {
                   "path": "$.coupleDetails[0].bride.firstName"
                 }
-              },      
+              }, 		    
+              {
+                "variable": "brideDOB",
+                "value": {
+                  "path": "$.coupleDetails[0].bride.dateOfBirth"
+                },
+                "type": "date"
+              },   
+		    
+		    
  {
                 "variable": "brideFatherName",
                 "value": {
@@ -182,6 +185,13 @@
                 "value": {
                   "path": "$.coupleDetails[0].groom.firstName"
                 }
+              }, 		    
+              {
+                "variable": "groomDOB",
+                "value": {
+                  "path": "$.coupleDetails[0].groom.dateOfBirth"
+                },
+                "type": "date"
               },      
  {
                 "variable": "groomFatherName",
@@ -300,7 +310,7 @@
                {
                 "variable": "groomWitnessAddress",
                 "value": {
-                  "path": "$.coupleDetails[0].groom.witness.addressLine1"
+                  "path": "$.coupleDetails[0].groom.witness.address"
                 }
               },      
                {
@@ -336,7 +346,7 @@
                {
                 "variable": "brideWitnessAddress",
                 "value": {
-                  "path": "$.coupleDetails[0].bride.witness.addressLine1"
+                  "path": "$.coupleDetails[0].bride.witness.address"
                 }
               },      
                {
@@ -364,7 +374,7 @@
                 }
               },			  		    
               {
-                "variable": "licenseIssueDate",
+                "variable": "certificateIssueDate",
                 "value": {
                   "path": "$.issuedDate"
                 },
@@ -646,6 +656,14 @@
                 "apiRequest": null,
                 "responseMapping": [
                   {
+                    "variable": "ulb-name",
+                    "value": "$.MdmsRes.tenant.tenants[0].name"
+                  },
+                  {
+                    "variable": "ulb-grade",
+                    "value": "$.MdmsRes.tenant.tenants[0].city.ulbGrade"
+                  },
+                  {
                     "variable": "ulb-address",
                     "value": "$.MdmsRes.tenant.tenants[0].address"
                   },
@@ -691,7 +709,7 @@
                 "responseMapping": [
                   {
                     "variable": "userpic",
-                    "value": "$.fileStoreIds[0].url",
+                    "value": "$.fileStoreIds[0].localUrl",
                     "type": "image"
                   }
                 ]

@@ -65,11 +65,11 @@ ReportDefinitions:
     isMandatory: true
     searchClause: AND ewc.tenantid = $ulb
   - name: ward
-    label: Ward (Eg 01,02,..)
+    label: Ward (Eg NIL,01,02,..)
     type: string
     source: pt
     isMandatory: false
-    searchClause: AND EWC.additionaldetails->>'ward'=$ward
+    searchClause: and case when LOWER($ward) = 'nil'  then EWC.ADDITIONALDETAILS ->> 'ward' is null  else EWC.ADDITIONALDETAILS ->> 'ward' = $ward  end
   query: |
       select INITCAP(SPLIT_PART(EWC.TENANTID,'.',2)) as ULB,EWC.ADDITIONALDETAILS->>'ward' as WARD,EWC.CONNECTIONNO,EWC.OLDCONNECTIONNO,EWS.CONNECTIONTYPE,EWS.METERID, 	coalesce(DM.TOTALTAXAMT, 0) as TOTALTAXAMT,coalesce(DM.TOTALCOLLECTEDAMT, 0) as TOTALCOLLECTEDAMT,case when coalesce(DM.TOTALTAXAMT, 0) > coalesce(DM.TOTALCOLLECTEDAMT, 0) then coalesce(DM.TOTALTAXAMT, 0) - coalesce(DM.TOTALCOLLECTEDAMT, 0) else 0 end as DUEAMOUNT,case when coalesce(DM.TOTALCOLLECTEDAMT, 0) > coalesce(DM.TOTALTAXAMT, 0) then coalesce(DM.TOTALCOLLECTEDAMT, 0) - coalesce(DM.TOTALTAXAMT,0) else 0 end as REMAININGBAL from EG_WS_CONNECTION EWC inner join EG_WS_SERVICE EWS on EWC.tenantid=$ulb and EWC.ID =EWS.CONNECTION_ID left outer join (select EDV.CONSUMERCODE,SUM(case when taxheadcode != 'WS_ADVANCE_CARRYFORWARD' then TAXAMOUNT else 0 end) as TOTALTAXAMT,SUM(case when taxheadcode != 'WS_ADVANCE_CARRYFORWARD' then COLLECTIONAMOUNT else -TAXAMOUNT end) as TOTALCOLLECTEDAMT from EGBS_DEMAND_V1 EDV inner join EGBS_DEMANDDETAIL_V1 EDV2 on Edv.tenantid=$ulb and EDV.ID=EDV2.DEMANDID group by EDV.CONSUMERCODE) DM on EWC.CONNECTIONNO=DM.CONSUMERCODE where EWC.APPLICATIONSTATUS='CONNECTION_ACTIVATED' and EWC.ISOLDAPPLICATION=false
   orderby: ORDER BY ewc.tenantid DESC NULLS LAST
@@ -129,11 +129,11 @@ ReportDefinitions:
     isMandatory: true
     searchClause: AND ewc.tenantid = $ulb
   - name: ward
-    label: Ward (Eg 01,02,..)
+    label: Ward (Eg NIL,01,02,..)
     type: string
     source: pt
     isMandatory: false
-    searchClause: AND EWC.additionaldetails->>'ward'=$ward
+    searchClause: and case when LOWER($ward) = 'nil'  then EWC.ADDITIONALDETAILS ->> 'ward' is null  else EWC.ADDITIONALDETAILS ->> 'ward' = $ward  end
   - name: connectionno
     label: Connection No
     type: string
@@ -304,6 +304,7 @@ ReportDefinitions:
       select INITCAP(SPLIT_PART(EWC.TENANTID, '.', 2))as ULB, EWC.ADDITIONALDETAILS ->> 'ward' AS WARD, EWC.CONNECTIONNO, EWC.OLDCONNECTIONNO, DM.DEMANDCREATIONDATE, DM.TAXPERIODFROM, DM.TAXPERIODTO, DM.TOTALTAXAMT, DM.TOTALCOLLECTEDAMT,case when coalesce(DM.TOTALTAXAMT, 0) > coalesce(DM.TOTALCOLLECTEDAMT, 0) then coalesce(DM.TOTALTAXAMT, 0) - coalesce(DM.TOTALCOLLECTEDAMT, 0) else 0 end as DUEAMOUNT,case when coalesce(DM.TOTALCOLLECTEDAMT, 0) > coalesce(DM.TOTALTAXAMT, 0) then coalesce(DM.TOTALCOLLECTEDAMT, 0) - coalesce(DM.TOTALTAXAMT, 0) else 0 end as REMAININGBAL from EG_WS_CONNECTION EWC inner join EG_WS_SERVICE EWS on EWC.ID = EWS.CONNECTION_ID left outer join(select edv.consumercode, to_char(to_timestamp(edv.createdtime / 1000), 'DD-MM-YYYY')as DemandCreationDate, to_char(to_timestamp(edv.taxperiodfrom / 1000), 'DD-MM-YYYY')as TaxPeriodFrom, to_char(to_timestamp(edv.taxperiodto / 1000), 'DD-MM-YYYY')as TaxPeriodTo, edv2.demandid, edv2.TOTALTAXAMT, edv2.TOTALCOLLECTEDAMT, edv.status, edv.businessservice from EGBS_DEMAND_V1 EDV inner join(select demandid, SUM(CASE WHEN taxheadcode!='WS_ADVANCE_CARRYFORWARD' THEN TAXAMOUNT ELSE 0 END)as TOTALTAXAMT, SUM(CASE WHEN taxheadcode!='WS_ADVANCE_CARRYFORWARD' THEN COLLECTIONAMOUNT ELSE -TAXAMOUNT END)as TOTALCOLLECTEDAMT from EGBS_DEMANDDETAIL_V1 group by demandid)edv2 on EDV.ID = EDV2.DEMANDID)DM on EWC.connectionno = DM.CONSUMERCODE where EWC.APPLICATIONSTATUS = 'CONNECTION_ACTIVATED' AND DM.STATUS = 'ACTIVE' AND DM.BUSINESSSERVICE = 'WS'
 
 - reportName: WaterMonthlyDemandsReport
+  decryptionPathId: WaterMonthlyDemandsReport
   summary: Water Monthly Demands Report
   version: 1.0.0
   moduleName: rainmaker-ws
@@ -328,6 +329,11 @@ ReportDefinitions:
     type: string
     source: pt
     total: false
+  - name: connectiontype
+    label: ConnectionType
+    type: string
+    source: pt
+    total: false
   - name: name
     label: Connection Holder Name
     type: string
@@ -340,6 +346,16 @@ ReportDefinitions:
     total: false
   - name: address
     label: Address
+    type: string
+    source: pt
+    total: false
+  - name: taxperiodfrom
+    label: Demand Period From
+    type: string
+    source: pt
+    total: false
+  - name: taxperiodto
+    label: Demand Period To
     type: string
     source: pt
     total: false
@@ -415,13 +431,273 @@ ReportDefinitions:
     pattern: http://egov-mdms-service:8080/egov-mdms-service/v1/_get?moduleName=ws-services-masters&masterName=connectionType&tenantId=od|MdmsRes.ws-services-masters.connectionType[*].code|MdmsRes.ws-services-masters.connectionType[*].name
     source: pt
     wrapper: true
-    isMandatory: true
+    isMandatory: false
     searchClause: AND ews.connectiontype = $connectiontype
   - name: ward
-    label: Ward (Eg 01,02,..)
+    label: Ward (Eg NIL,01,02,..)
     type: string
     source: pt
     isMandatory: true
-    searchClause: AND EWC.additionaldetails->>'ward'=$ward
+    searchClause: and case when LOWER($ward) = 'nil'  then EWC.ADDITIONALDETAILS ->> 'ward' is null  else EWC.ADDITIONALDETAILS ->> 'ward' = $ward  end
   query: |
       select INITCAP(SPLIT_PART(EWC.TENANTID, '.', 2))as ULB, EWC.ADDITIONALDETAILS ->> 'ward' AS WARD, name,mobilenumber,address, EWC.CONNECTIONNO, EWC.OLDCONNECTIONNO, ews.connectiontype, DM.DEMANDCREATIONDATE, DM.MONTHOFTAXPERIODTO, DM.TAXPERIODFROM, DM.TAXPERIODTO, DM.DEMANDID, DM.TAXAMOUNT as CURRENTDEMAND,DM.COLLECTIONAMOUNT as collectionamount, coalesce(arreardtl.totalcollectableinarrears,0) - coalesce(arreardtl.totalcollectedinarrears,0) as arrear, DM.REBATEAMOUNT, DM.PENALTYAMOUNT, -DM.ADVANCEAMOUNT AS ADVANCEAMOUNT ,CASE WHEN (DM.TAXAMOUNT-DM.COLLECTIONAMOUNT + DM.PENALTYAMOUNT + DM.ADVANCEAMOUNT + coalesce(arreardtl.totalcollectableinarrears, 0) - coalesce(arreardtl.totalcollectedinarrears, 0))>0 THEN DM.TAXAMOUNT-DM.COLLECTIONAMOUNT + DM.PENALTYAMOUNT + DM.ADVANCEAMOUNT + coalesce(arreardtl.totalcollectableinarrears, 0) - coalesce(arreardtl.totalcollectedinarrears, 0) ELSE 0 END as TOTALDUE, CASE WHEN (round(((DM.TAXAMOUNT-DM.COLLECTIONAMOUNT)* 0.98)+ DM.ADVANCEAMOUNT + DM.REBATEAMOUNT + coalesce(arreardtl.totalcollectableinarrears, 0) - coalesce(arreardtl.totalcollectedinarrears, 0))) >0 THEN round(((DM.TAXAMOUNT-DM.COLLECTIONAMOUNT)* 0.98)+ DM.ADVANCEAMOUNT + DM.REBATEAMOUNT + coalesce(arreardtl.totalcollectableinarrears, 0) - coalesce(arreardtl.totalcollectedinarrears, 0)) ELSE 0 END as AMOUNTBEFOREDUEDATE, CASE WHEN (round(((DM.TAXAMOUNT-DM.COLLECTIONAMOUNT)* 1.05)+ DM.ADVANCEAMOUNT + DM.PENALTYAMOUNT + coalesce(arreardtl.totalcollectableinarrears, 0) - coalesce(arreardtl.totalcollectedinarrears, 0)))>0 THEN round(((DM.TAXAMOUNT-DM.COLLECTIONAMOUNT)* 1.05)+ DM.ADVANCEAMOUNT + DM.PENALTYAMOUNT + coalesce(arreardtl.totalcollectableinarrears, 0) - coalesce(arreardtl.totalcollectedinarrears, 0)) ELSE 0 END as AMOUNTAFTERDUEDATE from EG_WS_CONNECTION EWC inner join EG_WS_SERVICE EWS on EWC.ID = EWS.CONNECTION_ID left outer join(select edv.consumercode, to_char(to_timestamp(edv.createdtime / 1000), 'DD-MM-YYYY')as DemandCreationDate, TO_CHAR(to_timestamp(edv.taxperiodto / 1000), 'Mon')as MONTHOFTAXPERIODTO, to_char(to_timestamp(edv.taxperiodfrom / 1000), 'DD-MM-YYYY')as TaxPeriodFrom, to_timestamp(edv.taxperiodto / 1000)as formattedtaxperiodto, to_char(to_timestamp(edv.taxperiodto / 1000), 'DD-MM-YYYY')as TaxPeriodTo, edv2.demandid, edv2.taxamount,edv2.collectionamount, edv2.rebateamount, edv2.penaltyamount, edv2.advanceamount, edv.status, edv.businessservice from EGBS_DEMAND_V1 EDV inner join(select egb1.demandid, egb1.taxheadcode, egb1.taxamount,coalesce(egb1.collectionamount,0) as collectionamount, coalesce(egb2.rebateamount,0)as rebateamount, coalesce(egb3.penaltyamount,0)as penaltyamount, coalesce(egb4.advanceamount,0)as advanceamount from egbs_demanddetail_v1 egb1 left join(select demandid, taxamount as rebateamount from egbs_demanddetail_v1 where taxheadcode = 'WS_TIME_REBATE' AND tenantid=$ulb)egb2 on egb1.demandid = egb2.demandid left join(select demandid, taxamount as penaltyamount from egbs_demanddetail_v1 where taxheadcode = 'WS_TIME_PENALTY' AND tenantid=$ulb)egb3 on egb1.demandid = egb3.demandid left join(select demandid, taxamount as advanceamount from egbs_demanddetail_v1 where taxheadcode = 'WS_ADVANCE_CARRYFORWARD' AND tenantid=$ulb)egb4 on egb1.demandid = egb4.demandid WHERE egb1.taxheadcode = 'WS_CHARGE' AND egb1.tenantid=$ulb)edv2 on EDV.ID = EDV2.DEMANDID)DM on EWC.connectionno = DM.CONSUMERCODE left outer join(select consumercode,sum(totaltaxamt)as totalcollectableinarrears,sum(totalcollectedamt)as totalcollectedinarrears from egbs_demand_v1 egdm1 inner join(SELECT d_detail.DEMANDID,SUM(d_detail.TAXAMOUNT)AS TOTALTAXAMT,SUM(d_detail.COLLECTIONAMOUNT)AS TOTALCOLLECTEDAMT FROM EGBS_DEMANDDETAIL_V1 d_detail,egbs_demand_v1 dd where dd.id=d_detail.demandid AND d_detail.tenantid=$ulb AND dd.tenantid=$ulb GROUP BY d_detail.DEMANDID)egdd1 on egdm1.id=egdd1.demandid where date(to_timestamp(taxperiodto/1000))< date($startdate)AND ispaymentcompleted=false AND businessservice='WS' AND STATUS = 'ACTIVE' AND tenantid=$ulb group by consumercode)arreardtl on EWC.connectionno=arreardtl.consumercode left outer join(select name,mobilenumber,address,connectionid from eg_ws_connectionholder ewch inner join(select name,mobilenumber,address,egu.uuid from eg_user egu inner join eg_user_address eguad on eguad.userid=egu.id where eguad.type = 'CORRESPONDENCE')usr on ewch.userid=usr.uuid)conholder on ewc.id=conholder.connectionid where EWC.APPLICATIONSTATUS = 'CONNECTION_ACTIVATED' AND DM.STATUS = 'ACTIVE' AND DM.BUSINESSSERVICE = 'WS'
+
+- reportName: WSConnectionsEligibleForDemandGeneration
+  summary: WS Connections Eligible For Demand Generation
+  version: 1.0.0
+  moduleName: rainmaker-ws
+  sourceColumns:
+  - name: ulb
+    label: ULB
+    type: string
+    source: pt
+    total: false
+  - name: ward
+    label: Ward
+    type: string
+    source: pt
+    total: false
+  - name: connectionscount
+    label: No of Connections
+    type: string
+    source: pt
+    total: true
+  searchParams:
+  - name: ulb
+    label: ULB Name
+    type: singlevaluelist
+    pattern: http://egov-mdms-service:8080/egov-mdms-service/v1/_get?moduleName=tenant&masterName=tenants&tenantId=od|MdmsRes.tenant.tenants[*].code|MdmsRes.tenant.tenants[*].name
+    source: pt
+    wrapper: true
+    isMandatory: true
+    searchClause: ;
+  query: |
+      select INITCAP(SPLIT_PART(EWC.TENANTID,'.',2)) as ULB ,EWC.ADDITIONALDETAILS->>'ward' as ward,count(distinct ewc.connectionno) as connectionscount from  eg_ws_connection ewc inner join eg_ws_service ews  on ewc.tenantid=$ulb and ewc.id = ews.connection_id where ews.connectiontype ='Non Metered' and ewc.applicationstatus ='CONNECTION_ACTIVATED' and ewc.isoldapplication =false and ewc.tenantid =$ulb group by ewc.tenantid,EWC.ADDITIONALDETAILS->>'ward'
+
+- reportName: WSSchedulerBasedDemandsGenerationReport
+  summary: WS Scheduler Based Demands Generation Report
+  version: 1.0.0
+  moduleName: rainmaker-ws
+  sourceColumns:
+  - name: ulb
+    label: ULB
+    type: string
+    source: pt
+    total: false
+  - name: ward
+    label: Ward
+    type: string
+    source: pt
+    total: false
+  - name: consumercode
+    label: Connection No
+    type: string
+    source: pt
+    total: false
+  - name: oldconnectionno
+    label: Old Connection No
+    type: string
+    source: pt
+    total: false
+  - name: connectiontype
+    label: Connection Type
+    type: string
+    source: pt
+    total: false
+  - name: demandcreationdate
+    label: Demand Generation Date
+    type: string
+    source: pt
+    total: false
+  - name: taxperiodfrom
+    label: Tax Period From
+    type: string
+    source: pt
+    total: false
+  - name: taxperiodto
+    label: Tax Period To
+    type: string
+    source: pt
+    total: false
+  searchParams:
+  - name: ulb
+    label: ULB Name
+    type: singlevaluelist
+    pattern: http://egov-mdms-service:8080/egov-mdms-service/v1/_get?moduleName=tenant&masterName=tenants&tenantId=od|MdmsRes.tenant.tenants[*].code|MdmsRes.tenant.tenants[*].name
+    source: pt
+    wrapper: true
+    isMandatory: true
+    searchClause: AND edv.tenantid = $ulb
+  - name: ward
+    label: Ward (Eg NIL,01,02,..)
+    type: string
+    source: pt
+    isMandatory: false
+    searchClause: and case when LOWER($ward) = 'nil'  then EWC2.ADDITIONALDETAILS ->> 'ward' is null  else EWC2.ADDITIONALDETAILS ->> 'ward' = $ward  end
+  - name: monthYear
+    label: Month/Year
+    type: epoch
+    source: pt
+    isMandatory: true
+    searchClause: and (taxperiodfrom >= date_part('epoch',date_trunc('month', date($monthYear)-interval '0 year'))*1000 and taxperiodfrom <= date_part('epoch',date_trunc('month', date($monthYear)-interval '0 year')+'1month'::interval-'1second'::interval)*1000)
+  query: |
+      select INITCAP(SPLIT_PART(EWC2.TENANTID,'.',2)) as ULB,EWC2.ADDITIONALDETAILS->>'ward' as WARD,edv.consumercode,ewc2.oldconnectionno,to_char(to_timestamp(edv.taxperiodfrom/1000),'DD-MM-YYYY')as TaxPeriodFrom,to_char(to_timestamp(edv.taxperiodto/1000),'DD-MM-YYYY')as TaxPeriodTo,edv.billexpirytime,edv.fixedbillexpirydate,to_char(to_timestamp(edv.createdtime/1000),'DD-MM-YYYY')as DemandCreationDate,ews2.connectiontype from egbs_demand_v1 edv inner join eg_ws_connection ewc2 on ewc2.tenantid=$ulb and EWC2.connectionno=edv.CONSUMERCODE inner join eg_ws_service ews2 on ewc2.id = ews2.connection_id where businessservice = 'WS' and consumercode in (select connectionno from eg_ws_connection ewc inner join eg_ws_service ews on ewc.tenantid=$ulb and ewc.id = ews.connection_id where ews.connectiontype = 'Non Metered' and ewc.applicationstatus = 'CONNECTION_ACTIVATED' and ewc.isoldapplication = false and ewc.tenantid = $ulb)
+  
+- reportName: EmployeeWiseWSCollectionReport
+  decryptionPathId: WaterEmployeeWiseCollection
+  summary: Employee wise WS collection repprt
+  version: 1.0.0
+  moduleName: rainmaker-ws
+  sourceColumns:
+  - name: ulb
+    label: ULB
+    type: string
+    source: pt
+    total: false
+  - name: empuserid
+    label: Employee User ID
+    type: string
+    source: pt
+    total: false
+  - name: empname
+    label: Employee User Name
+    type: string
+    source: pt
+    total: false
+  - name: head
+    label: Head
+    type: string
+    source: pt
+    total: false
+  - name: paymentdate
+    label: Payment Date
+    type: string
+    source: pt
+    total: false
+  - name: paymentmode
+    label: Mode of Payment
+    type: string
+    source: pt
+    total: false
+  - name: receiptnumber
+    label: Recipt No
+    type: string
+    source: pt
+    total: false
+  - name: amountpaid
+    label: Amount
+    type: string
+    source: pt
+    total: true
+  - name: connectionno
+    label: Consumer Number
+    type: string
+    source: pt
+    total: false
+  - name: oldconnectionno
+    label: Old Consumer Number
+    type: string
+    source: pt
+    total: false
+  - name: holdername
+    label: Consumer Name
+    type: string
+    source: pt
+    total: false
+  - name: ward
+    label: Ward No
+    type: string
+    source: pt
+    total: false
+  searchParams:
+  - name: ulb
+    label: ULB Name
+    type: singlevaluelist
+    pattern: http://egov-mdms-service:8080/egov-mdms-service/v1/_get?moduleName=tenant&masterName=tenants&tenantId=od|MdmsRes.tenant.tenants[*].code|MdmsRes.tenant.tenants[*].name
+    source: pt
+    wrapper: true
+    isMandatory: true
+    searchClause: AND ep2.tenantid = $ulb
+  - name: startdate
+    label: Start Date
+    type: epoch
+    source: pt
+    isMandatory: false
+    searchClause: AND date(to_timestamp(ep.transactiondate/1000)) >= date($startdate)+1
+  - name: enddate
+    label: End Date
+    type: epoch
+    source: pt
+    isMandatory: false
+    searchClause: AND date(to_timestamp(ep.transactiondate/1000)) <= date($enddate)+1
+  query: |
+      select INITCAP(SPLIT_PART(ep.tenantid,'.',2)) as ULB,	ce.username empuserid, ce."name" empname, 'Water' as head, to_char(to_timestamp(ep.transactiondate / 1000), 'DD-Mon-YYYY HH:mm:SS') as paymentdate, ep.paymentmode,	ep2.receiptnumber, ep2.amountpaid, ewc.connectionno, ewc.oldconnectionno, ch."name" holdername, EWC.ADDITIONALDETAILS->>'ward' as ward from egcl_payment ep inner join egcl_paymentdetail ep2 on ep2.paymentid = ep.id inner join eg_user ce on ce.id = cast(ep.createdby as INTEGER) inner join egcl_bill ebv on ep2.billid = ebv.id inner join eg_ws_connection ewc on ebv.consumercode = ewc.connectionno inner join eg_ws_connectionholder esc on esc.connectionid = ewc.id inner join eg_user ch on ch.uuid = esc.userid where ep2.businessservice like 'WS' and ce."type" ='EMPLOYEE' and ewc.isoldapplication = false
+
+- reportName: EmployeeDateWiseWSCollection
+  decryptionPathId: WaterEmployeeWiseCollection
+  summary: Employee Date wise WS collection report
+  version: 1.0.0
+  moduleName: rainmaker-ws
+  sourceColumns:
+  - name: ulb
+    label: ULB
+    type: string
+    source: pt
+    total: false
+  - name: empuserid
+    label: Employee User ID
+    type: string
+    source: pt
+    total: false
+  - name: empname
+    label: Employee User Name
+    type: string
+    source: pt
+    total: false
+  - name: head
+    label: Head
+    type: string
+    source: pt
+    total: false
+  - name: paymentdate
+    label: Payment Date
+    type: string
+    source: pt
+    total: false
+  - name: paymentmode
+    label: Mode of Payment
+    type: string
+    source: pt
+    total: false
+  - name: ApplicationOrConsumerNo
+    label: Appl./Consumer No
+    type: string
+    source: pt
+    total: false
+  - name: receiptnumber
+    label: Recipt No
+    type: string
+    source: pt
+    total: false
+  - name: amountpaid
+    label: Amount
+    type: string
+    source: pt
+    total: true
+  searchParams:
+  - name: ulb
+    label: ULB Name
+    type: singlevaluelist
+    pattern: http://egov-mdms-service:8080/egov-mdms-service/v1/_get?moduleName=tenant&masterName=tenants&tenantId=od|MdmsRes.tenant.tenants[*].code|MdmsRes.tenant.tenants[*].name
+    source: pt
+    wrapper: true
+    isMandatory: true
+    searchClause: AND ep2.tenantid = $ulb
+  - name: collectiondate
+    label: Collection Date
+    type: epoch
+    source: pt
+    isMandatory: true
+    searchClause: AND date(to_timestamp(ep.transactiondate/1000)) = date($collectiondate)+1
+  query: |
+      select INITCAP(SPLIT_PART(ep.tenantid,'.',2)) as ULB,	ce.username empuserid, ce."name" empname, 'Water' as head,to_char(to_timestamp(ep.transactiondate / 1000), 'DD-Mon-YYYY HH:mm:SS') as paymentdate, ep.paymentmode,ep2.receiptnumber, ep2.amountpaid,ep2.businessservice as businessservice,ebv.consumercode as ApplicationOrConsumerNo from egcl_payment ep inner join egcl_paymentdetail ep2 on ep2.paymentid = ep.id inner join eg_user ce on ce.id = cast(ep.createdby as INTEGER) inner join egcl_bill ebv on ep2.billid = ebv.id where ep2.businessservice like 'WS%' and ce."type" ='EMPLOYEE'

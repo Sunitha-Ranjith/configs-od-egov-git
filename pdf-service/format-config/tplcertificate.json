@@ -13,6 +13,19 @@
         0
       ]
     },
+    "footer": [
+      {
+        "text": "This is a digitally signed electronically generated certificate and therefore needs no ink-signed signature. This certificate is issued as per section 4, 5 & 6 of Information Technologuy Act 2000 and its subsequent amendmends in 2008. Tampering of this certificate will attract penal actions.",
+        "alignment": "left",
+        "fontSize": 6,
+        "margin": [
+          5,
+          19,
+          5,
+          0
+        ]
+      }
+    ],
     "content": [
       {
         "style": "tl-head",
@@ -24,19 +37,17 @@
           ],
           "body": [
             [
-              {
-               
-              },
+              {},
               {
                 "stack": [
                   {
-                    "text": "{{ulb-address}}",
+                    "text": "{{ulb-name}} {{ulb-grade}}",
                     "style": "sub-header"
                   },
                   {
                     "image": "{{logoImage}}",
-                "width": 60,
-                "height": 66,
+                    "width": 60,
+                    "height": 66,
                     "style": "sub-header"
                   },
                   {
@@ -44,7 +55,7 @@
                     "style": "sub-header"
                   },
                   {
-                    "text": "This Licence is Issued U/S 617 of OMC & U/S 337 of OM Act"
+                    "text": "This License is Issued U/S 617 of OMC & U/S 337 of OM Act"
                   }
                 ],
                 "alignment": "center",
@@ -137,11 +148,6 @@
                             "text": "Valid from:- {{licenseValidityFrom}}",
                             "alignment": "left",
                             "style": "sub-header1"
-                          },
-                          {
-                            "text": "Valid up to:- {{licenseValidityTo}}",
-                            "alignment": "right",
-                            "style": "sub-header1"
                           }
                         ]
                       ]
@@ -184,11 +190,11 @@
                       "body": [
                         [
                           {
-                            "text": "Trader Name",
+                            "text": "Trader Owner",
                             "style": "sub-header1"
                           },
                           {
-                            "text": "{{tradeOwnerName}}",
+                            "text": "{{tradeOwnerNames}}",
                             "style": "sub-body1"
                           }
                         ]
@@ -232,7 +238,7 @@
                             "style": "sub-header1"
                           },
                           {
-                            "text": "{{tradeType}}",
+                            "text": "{{tradeTypes}}",
                             "style": "sub-body1"
                           }
                         ]
@@ -321,6 +327,18 @@
         "layout": "noBorders"
       },
       {
+        "text": "DISCLAIMER",
+        "style": "sub-header"
+      },
+      {
+        "separator": ".",
+        "ol": [
+          "This Provisional licence is valid for three (3) months for Permanant License Types & valid for 30 days for Temporary License Types subject to granted solemnly on basis of documents submitted and self-certification. If any of the statements of undertaking/selfdeclaration are subsequently found otherwise, the Licence is liable to be cancelled/ revoked for all intents and purposes forthwith while forfeiting the fee.",
+          "Applicant shall be liable for legal and penal action for obtaining licence fraudulently by making false averments and further mere obtaining of licence by making false averments in this regard will not amount to permission for change of land use of premises in question.",
+          "The applicant will be penalized with ten (10) times of license fees if, any item/items of Trade found other than the licence granted."
+        ]
+      },
+      {
         "table": {
           "widths": [
             250,
@@ -333,21 +351,25 @@
                   {
                     "image": "{{qrCode}}",
                     "alignment": "left",
-                    "width": 73,
-                    "height": 73
+                    "width": 40,
+                    "height": 40
                   }
                 ]
               },
               {
                 "stack": [
                   {
-                    "text": "{{BY_ORDER}} {{OF}} {{approvedBy}}"
+                    "text": "",
+                    "bold": true
                   },
                   {
-                    "text": "{{AUTH_OFFICER}}"
+                    "text": ""
                   },
                   {
-                    "text": "{{tenantName}}"
+                    "text": ""
+                  },
+                  {
+                    "text": ""
                   }
                 ],
                 "alignment": "right"
@@ -356,18 +378,6 @@
           ]
         },
         "layout": "noBorders"
-      },
-      {
-        "text": "DISCLAIMER",
-        "style": "sub-header"
-      },
-      {
-        "separator": ".",
-        "ol": [
-          "This Provisional licence is valid for three (3) months subject to granted solemnly on basis of documents submitted and self-certification. If any of the statements of undertaking/selfdeclaration are subsequently found otherwise, the Licence is liable to be cancelled/ revoked for all intents and purposes forthwith while forfeiting the fee.",
-          "Applicant shall be liable for legal and penal action for obtaining licence fraudulently by making false averments and further mere obtaining of licence by making false averments in this regard will not amount to permission for change of land use of premises in question.",
-	  "The applicant will be penalized with ten (10) times of license fees if, any item/items of Trade found other than the licence granted."	
-        ]
       }
     ],
     "styles": {

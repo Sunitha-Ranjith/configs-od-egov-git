@@ -5,7 +5,7 @@
       "font": "Cambay",
       "fontSize": 12,
       "color": "#484848",
-      "lineHeight": 1,
+      "lineHeight": 0.9,
       "margin": [
         0,
         0,
@@ -13,6 +13,20 @@
         0
       ]
     },
+    "footer": [
+      {
+        "text": "This is a digitally signed electronically generated certificate and therefore needs no ink-signed signature. This certificate is issued as per section 4, 5 & 6 of Information Technologuy Act 2000 and its subsequent amendmends in 2008. Tampering of this certificate will attract penal actions.",
+        "alignment": "left",
+        "fontSize": 6,
+        "margin": [
+          5,
+          19,
+          5,
+          0
+        ]
+      }
+    ],
+    
     "content": [
       {
         "style": "tl-head",
@@ -28,27 +42,28 @@
               {
                 "stack": [
                   {
-                    "text": "{{ulb-address}}",
-                    "style": "sub-header"
-                  },
-                  {
                     "image": "{{logoImage}}",
                     "width": 60,
                     "height": 66,
                     "style": "sub-header"
                   },
                   {
-                    "text": "Under Section 8 of Hindu Marriage Act, 1955"
+                    "text": "Under Section 8 of Hindu Marriage Act, 1955",
+                    "italic": "true"
                   },
                   {
-                    "text": "& Orissa Hindu Marriage Registration Rule, 1960"
+                    "text": "& Orissa Hindu Marriage Registration Rule, 1960",
+                    "italic": "true"
                   },
                   {
                     "text": "Form-A",
+                    "bold": "true",
                     "style": "sub-header"
                   },
                   {
-                    "text": "Certificate of Hindu Marriage Registration"
+                    "text": "Certificate of Hindu Marriage Registration",
+                    "bold": "true",
+                    "italic": "true"
                   },
                   {
                     "text": "(See Rule-4)"
@@ -56,19 +71,20 @@
                 ],
                 "alignment": "center",
                 "font": "Roboto",
+                "lineHeight": 1,               
                 "margin": [
                   56,
                   10,
                   0,
-                  0
+                  -20
                 ]
               },
               {
                 "stack": [
                   {
                     "image": "{{qrCode}}",
-                    "width": 73,
-                    "height": 73
+                    "width": 60,
+                    "height": 60
                   }
                 ],
                 "alignment": "right",
@@ -105,18 +121,34 @@
                     "style": "noc-head",
                     "table": {
                       "widths": [
-                        "75%",
-                        "25%"
+                        "60%",
+                        "40%"
                       ],
                       "body": [
                         [
                           {
-                            "text": "Regd No: {{tradeLicenseNo}}",
+                            "text": [
+                              {
+                                "text": "Regd No: "
+                              },
+                              {
+                                "text": "{{mrNumber}}",
+                                "bold": true
+                              }
+                            ],
                             "alignment": "left",
                             "style": "sub-header1"
                           },
                           {
-                            "text": "Date of Registration: {{tradeLicenseNo}}",
+                            "text": [
+                              {
+                                "text": "Date of Registration: "
+                              },
+                              {
+                                "text": "{{certificateIssueDate}}",
+                                "bold": true
+                              }
+                            ],
                             "alignment": "left",
                             "style": "sub-header1"
                           }
@@ -129,18 +161,34 @@
                     "style": "noc-head",
                     "table": {
                       "widths": [
-                        "75%",
-                        "25%"
+                        "60%",
+                        "40%"
                       ],
                       "body": [
                         [
                           {
-                            "text": "Application No: {{applicationNo}}",
+                            "text": [
+                              {
+                                "text": "Application No: "
+                              },
+                              {
+                                "text": "{{applicationNo}}",
+                                "bold": true
+                              }
+                            ],
                             "alignment": "left",
                             "style": "sub-header1"
                           },
                           {
-                            "text": "Date of Application: {{applicationDate}}",
+                            "text": [
+                              {
+                                "text": "Date of Application: "
+                              },
+                              {
+                                "text": "{{applicationDate}}",
+                                "bold": true
+                              }
+                            ],
                             "alignment": "left",
                             "style": "sub-header1"
                           }
@@ -152,23 +200,113 @@
                   {
                     "text": "",
                     "alignment": "left"
-                  },				  
-                  {
-                    "text": "This is to certify that Shri {{groomName}}, S/O {{groomFatherName}}, residing at {{groomAddress}}, {{groomDistrict}} - {{groomPinCode}}, {{groomState}}, {{groomCountry}} and Smt {{brideName}}, D/O {{brideFatherName}}, residing at {{brideAddress}}, {{brideDistrict}} - {{bridePinCode}}, {{brideState}}, {{brideCountry}} have furnished the particulars in Memorandum declaring that their marriage has been solemnized on {{marriageDate}} at {{marriagePlace}} and that the same has been registered this day on the of with registration no. of Registrar of Marriages, maintained under the Orissa Hindu Marriage Registration Rule, 1960.",
-                    "alignment": "left",
-                    "style": "sub-header1"
                   },
                   {
-                    "text": "Other Particulars:",
+                    "text": [
+                      {
+                        "text": "This is to certify that Shri "
+                      },
+                      {
+                        "text": "{{groomName}},",
+                        "bold": true
+                      },
+                      {
+                        "text": " S/O"
+                      },
+                      {
+                        "text": " {{groomFatherName}},",
+                        "bold": true
+                      },
+                      {
+                        "text": " residing at "
+                      },
+                      {
+                        "text": "{{groomAddress}}, {{groomDistrict}} - {{groomPinCode}}, {{groomState}}, {{groomCountry}}",
+                        "bold": true
+                      },
+                      {
+                        "text": " and Smt "
+                      },
+                      {
+                        "text": "{{brideName}},",
+                        "bold": true
+                      },
+                      {
+                        "text": " D/O "
+                      },
+                      {
+                        "text": "{{brideFatherName}},",
+                        "bold": true
+                      },
+                      {
+                        "text": " residing at "
+                      },
+                      {
+                        "text": "{{brideAddress}}, {{brideDistrict}} - {{bridePinCode}}, {{brideState}}, {{brideCountry}}",
+                        "bold": true
+                      },
+                      {
+                        "text": " have furnished the particulars in Memorandum declaring that their marriage has been solemnized on "
+                      },
+                      {
+                        "text": "{{marriageDate}}",
+                        "bold": true
+                      },
+                      {
+                        "text": " at "
+                      },
+                      {
+                        "text": "{{marriagePlace}}",
+                        "bold": true
+                      },
+                      {
+                        "text": " and that the same has been registered this day on the "
+                      },
+                      {
+                        "text": "4th of August, 2021",
+                        "bold": true
+                      },
+                      {
+                        "text": " with registration no. "
+                      },
+                      {
+                        "text": "{{mrNumber}}",
+                        "bold": true
+                      },
+                      {
+                        "text": " of Registrar of Marriages, maintained under the Orissa Hindu Marriage Registration Rule, 1960."
+                      }
+                    ],
                     "alignment": "left",
-                    "style": "sub-header1"
+                    "italic": "true",
+                    "color": "#484848",
+                    "letterSpacing": 0.6,
+                    "margin": [
+                      -10,
+                      20,
+                      0,
+                      0
+                    ]
+                  },
+                  {
+                    "text": "Other Particulars: ",
+                    "alignment": "left",
+                    "style": "sub-header1",
+                    "decoration": "underline",
+                    "bold": "true",
+                    "margin": [
+                      -10,
+                      20,
+                      0,
+                      0
+                    ]
                   },
                   {
                     "style": "noc-head",
                     "table": {
                       "widths": [
-                        "40%",
-                        "60%"
+                        "52%",
+                        "48%"
                       ],
                       "body": [
                         [
@@ -177,8 +315,9 @@
                             "style": "sub-header1"
                           },
                           {
-                            "text": "{{tradeName}}",
-                            "style": "sub-body1"
+                            "text": "Bride ({{brideDOB}}) & Bridegroom ({{groomDOB}})",
+                            "style": "sub-body1",
+                            "bold": "true"
                           }
                         ]
                       ]
@@ -189,8 +328,8 @@
                     "style": "noc-head",
                     "table": {
                       "widths": [
-                        "40%",
-                        "60%"
+                        "52%",
+                        "48%"
                       ],
                       "body": [
                         [
@@ -200,7 +339,8 @@
                           },
                           {
                             "text": "{{brideGuardianName}}",
-                            "style": "sub-body1"
+                            "style": "sub-body1",
+                            "bold": "true"
                           }
                         ],
                         [
@@ -210,6 +350,7 @@
                           },
                           {
                             "text": "{{brideGuardianAddress}}, {{brideGuardianDistrict}} - {{brideGuardianPinCode}}, {{brideGuardianState}}, {{brideGuardianCountry}}",
+                            "bold": "true",
                             "style": "sub-body2"
                           }
                         ]
@@ -221,8 +362,8 @@
                     "style": "noc-head",
                     "table": {
                       "widths": [
-                        "45%",
-                        "55%"
+                        "52%",
+                        "48%"
                       ],
                       "body": [
                         [
@@ -232,6 +373,7 @@
                           },
                           {
                             "text": "{{groomGuardianName}}",
+                            "bold": "true",
                             "style": "sub-body1"
                           }
                         ],
@@ -242,6 +384,7 @@
                           },
                           {
                             "text": "{{groomGuardianAddress}}, {{groomGuardianDistrict}} - {{groomGuardianPinCode}}, {{groomGuardianState}}, {{groomGuardianCountry}}",
+                            "bold": "true",
                             "style": "sub-body2"
                           }
                         ]
@@ -253,8 +396,8 @@
                     "style": "noc-head",
                     "table": {
                       "widths": [
-                        "45%",
-                        "55%"
+                        "52%",
+                        "48%"
                       ],
                       "body": [
                         [
@@ -264,6 +407,7 @@
                           },
                           {
                             "text": "1. {{brideWitnessName}}",
+                            "bold": "true",
                             "style": "sub-body1"
                           }
                         ],
@@ -274,27 +418,30 @@
                           },
                           {
                             "text": "{{brideWitnessAddress}}, {{brideWitnessDistrict}} - {{brideWitnessPinCode}}, {{brideWitnessState}}, {{brideWitnessCountry}}",
+                            "bold": "true",
                             "style": "sub-body2"
                           }
                         ],
                         [
                           {
                             "text": "",
-                            "style": "sub-body3"
+                            "style": "sub-body2"
                           },
                           {
                             "text": "2. {{groomWitnessName}}",
-                            "style": "sub-body3"
+                            "bold": "true",
+                            "style": "sub-body2"
                           }
                         ],
                         [
                           {
                             "text": "",
-                            "style": "sub-body3"
+                            "style": "sub-body2"
                           },
                           {
                             "text": "{{groomWitnessAddress}}, {{groomWitnessDistrict}} - {{groomWitnessPinCode}}, {{groomWitnessState}}, {{groomWitnessCountry}}",
-                            "style": "sub-body3"
+                            "bold": "true",
+                            "style": "sub-body2"
                           }
                         ]
                       ]
@@ -311,14 +458,39 @@
                       "body": [
                         [
                           {
-                            "image": "{{userpic}}",
-                            "width": 146,
-                            "height": 76,
-                            "alignment": "center",
+                            "stack": [
+                              {
+                                "image": "{{userpic}}",
+                                "width": 118,
+                                "height": 61,
+                                "alignment": "left",
+                                "margin": [
+                                  -10,
+                                  60,
+                                  0,
+                                  10
+                                ]
+                              }
+                            ]
+                          },
+                          {
+                            "stack": [
+                              {
+                                "text": "By Order of {{approvedBy}}",
+                                "bold": true
+                              },
+                              {
+                                "text": "Registrar of Marriage"
+                              },
+                              {
+                                "text": "{{ulb-name}} {{ulb-grade}}"
+                              }
+                            ],
+                            "alignment": "right",
                             "margin": [
                               0,
-                              40,
-                              0,
+                              60,
+                              20,
                               10
                             ]
                           }
@@ -340,37 +512,6 @@
           ]
         },
         "layout": "noBorders"
-      },
-      {
-        "table": {
-          "widths": [
-            "75%",
-            "25%"
-          ],
-          "body": [
-            [
-              {
-                "text": "Place",
-                "alignment": "left"
-              },
-              {
-                "text": "Miss Kiran",
-                "alignment": "left"
-              }
-            ],
-[
-              {
-                "text": "Cuttack",
-                "alignment": "left"
-              },
-              {
-                "text": "Registrar of Marriage",
-                "alignment": "left"
-              }
-            ]			
-          ]
-        },
-        "layout": "noBorders"
       }
     ],
     "styles": {
@@ -384,7 +525,7 @@
       },
       "noc-head": {
         "margin": [
-          -20,
+          0,
           -35,
           -10,
           -2
@@ -492,7 +633,7 @@
         "letterSpacing": 0.6,
         "alignment": "left",
         "margin": [
-          20,
+          -10,
           40,
           0,
           0
@@ -517,7 +658,7 @@
         "alignment": "left",
         "margin": [
           25,
-          -25,
+          0,
           0,
           0
         ]
@@ -529,7 +670,7 @@
         "alignment": "left",
         "margin": [
           25,
-          -5,
+          90,
           0,
           0
         ]
