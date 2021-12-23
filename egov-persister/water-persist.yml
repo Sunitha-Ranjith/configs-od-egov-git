@@ -84,13 +84,13 @@ serviceMaps:
 
        - jsonPath: $.WaterConnection.connectionFacility
 
-       - jsonPath: $.WaterConnection.noofwaterclosets
+       - jsonPath: $.WaterConnection.noOfWaterClosets
 
-       - jsonPath: $.WaterConnection.nooftoilets
+       - jsonPath: $.WaterConnection.noOfToilets
 
-       - jsonPath: $.WaterConnection.proposedwaterclosets
+       - jsonPath: $.WaterConnection.proposedWaterClosets
 
-       - jsonPath: $.WaterConnection.proposedtoilets
+       - jsonPath: $.WaterConnection.proposedToilets
        
        - jsonPath: $.WaterConnection.additionalDetails.appCreatedDate
        
@@ -241,13 +241,13 @@ serviceMaps:
 
        - jsonPath: $.WaterConnection.connectionFacility
 
-       - jsonPath: $.WaterConnection.noofwaterclosets
+       - jsonPath: $.WaterConnection.noOfWaterClosets
 
-       - jsonPath: $.WaterConnection.nooftoilets
+       - jsonPath: $.WaterConnection.noOfToilets
 
-       - jsonPath: $.WaterConnection.proposedwaterclosets
+       - jsonPath: $.WaterConnection.proposedWaterClosets
 
-       - jsonPath: $.WaterConnection.proposedtoilets
+       - jsonPath: $.WaterConnection.proposedToilets
 
        - jsonPath: $.WaterConnection.id
 
