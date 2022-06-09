@@ -2154,6 +2154,38 @@
                 }
               ]
             },
+			{
+                "id": 301,
+                "name": "DSS_OBPS_OVERVIEW",
+                "vizType": "module",
+                "moduleLevel": "OBPS",
+                "ref": {
+                  "url": "obps",
+                  "logoUrl": "",
+                  "type": "internal"
+                },
+                "label": "",
+                "charts": [
+                  {
+
+                    "id":"bpaTotalCollection",
+                    "name":"DSS_BPA_TOTAL_COLLECTIONS",
+                      "code":"",
+                      "chartType":"metric",
+                      "filter":"",
+                      "headers":[]
+
+                  },
+                  {
+                    "id":"bpaTotalPermitsIssued",
+                    "name":"DSS_BPA_TOTAL_PERMITS_ISSUED",
+                    "code":"",
+                    "chartType":"metric",
+                    "filter":"",
+                    "headers":[]
+                  }
+                ]
+            },
             {
               "id": 141,
               "name": "DSS_TRADE_LICENCE",
@@ -2183,38 +2215,14 @@
                   "headers": []
                 }
               ]
-            },
-            {
-              "id": 141,
-              "name": "DSS_PGR_OVERVIEW",
-              "vizType": "module",
-              "moduleLevel": "PGR",
-              "ref": {
-                "url": "pgr",
-                "logoUrl": "",
-                "type": "internal"
-              },
-              "label": "",
-              "charts": [
-                {
-                  "id": "totalComplaints",
-                  "name": "DSS_PGR_TOTAL_COMPLAINTS",
-                  "code": "",
-                  "chartType": "metric",
-                  "filter": "",
-                  "headers": []
-                },
-                {
-                  "id": "slaAchieved",
-                  "name": "DSS_PGR_SLA_ACHIEVED",
-                  "code": "",
-                  "chartType": "metric",
-                  "filter": "",
-                  "headers": []
-                }
-              ]
-            },
-            {
+            }
+          ]
+        },
+        {
+          "row": 3,
+          "name": "DSS_OVERVIEW",
+          "vizArray": [
+          {
               "id": 142,
               "name": "DSS_WATER_SEWERAGE",
               "vizType": "module",
@@ -2274,28 +2282,29 @@
                 }
               ]
             },
-            {
-              "id": 329,
-              "name": "DSS_MCOLLECT",
+			{
+              "id": 141,
+              "name": "DSS_PGR_OVERVIEW",
               "vizType": "module",
+              "moduleLevel": "PGR",
               "ref": {
-                "url": "mCollect",
+                "url": "pgr",
                 "logoUrl": "",
                 "type": "internal"
               },
               "label": "",
               "charts": [
                 {
-                  "id": "mcTotalCollection",
-                  "name": "DSS_MC_TOTAL_COLLECTION",
+                  "id": "totalComplaints",
+                  "name": "DSS_PGR_TOTAL_COMPLAINTS",
                   "code": "",
                   "chartType": "metric",
                   "filter": "",
                   "headers": []
                 },
                 {
-                  "id": "mcTotalReceipts",
-                  "name": "DSS_MC_TOTAL_RECEIPTS",
+                  "id": "slaAchieved",
+                  "name": "DSS_PGR_SLA_ACHIEVED",
                   "code": "",
                   "chartType": "metric",
                   "filter": "",
@@ -2303,109 +2312,10 @@
                 }
               ]
             }
-          ]
-         },
-         {
-              "row": 3,
-              "name": "DSS_OVERVIEW",
-              "vizArray": [
-               {
-                "id": 201,
-                "name": "DSS_FIRENOC_OVERVIEW",
-                "vizType": "module",
-                "moduleLevel": "FIRENOC",
-                "ref": {
-                  "url": "noc",
-                  "logoUrl": "",
-                  "type": "internal"
-                },
-                "label": "",
-                "charts": [
-                  {
-                    "id": "nocTotalCollection",
-                    "name": "DSS_NOC_TOTAL_COLLECTION",
-                    "code": "",
-                    "chartType": "metric",
-                    "filter": "",
-                    "headers": []
-                  },				
-				          {
-                    "id": "nocTotalNocsIssued",
-                    "name": "DSS_NOC_TOTAL_NOCS_ISSUED",
-                    "code": "",
-                    "chartType": "metric",
-                    "filter": "",
-                    "headers": []
-                  }
-                ]
-              },
-              {
-                "id": 301,
-                "name": "DSS_OBPS_OVERVIEW",
-                "vizType": "module",
-                "moduleLevel": "OBPS",
-                "ref": {
-                  "url": "obps",
-                  "logoUrl": "",
-                  "type": "internal"
-                },
-                "label": "",
-                "charts": [
-                  {
-
-                    "id":"bpaTotalCollection",
-                    "name":"DSS_BPA_TOTAL_COLLECTIONS",
-                      "code":"",
-                      "chartType":"metric",
-                      "filter":"",
-                      "headers":[]
-
-                  },
-                  {
-                    "id":"bpaTotalPermitsIssued",
-                    "name":"DSS_BPA_TOTAL_PERMITS_ISSUED",
-                    "code":"",
-                    "chartType":"metric",
-                    "filter":"",
-                    "headers":[]
-                  }
-                ]
-              },
-               {
-                "id": 152,
-                "name": "DSS_BIRTH_DEATH",
-                "vizType": "module",
-                "moduleLevel": "BIRTH-DEATH",
-                "ref": {
-                  "url": "birth-death",
-                  "logoUrl": "",
-                  "type": "internal"
-                },
-                "label": "",
-                "charts": [
-                  {
-                    "id": "dssBNDNetCollection",
-                    "name": "DSS_BND_NET_COLLECTION",
-                    "code": "",
-                    "chartType": "metric",
-                    "filter": "",
-                    "headers": []
-                  },
-                  {
-                  "id": "dssBNDTotalApplication",
-                  "name": "DSS_TOTAL_APPLICATION",
-                  "code": "",
-                  "chartType": "metric",
-                  "filter": "",
-                  "headers": []
-                  }
-                ]
-              }
            ]
         }
       ]
     },
-
     {
       "name": "DSS_PGR_DASHBOARD",
       "id": "ulb-pgr",
