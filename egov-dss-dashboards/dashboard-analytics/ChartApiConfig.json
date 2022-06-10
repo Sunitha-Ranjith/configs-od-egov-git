@@ -664,32 +664,11 @@
         "dateRefField": "Data.@timestamp"
       },
       {
-        "module": "FIRENOC",
-        "indexName": "firenoc-services",
-        "requestQueryMap": "{\"wardId\" : \"Data.ward.name.keyword\",\"tenantId\" : \"Data.tenantId\", \"district\" : \"Data.tenantData.city.districtCode\"}",
-        "aggrQuery": "{\"aggs\":{\"FireNOC\":{\"filter\":{\"bool\":{\"must_not\":[{\"term\":{\"Data.tenantId.keyword\":\"od.testing\"}}]}},\"aggs\":{\"Total Application\":{\"value_count\":{\"field\":\"Data.tenantId.keyword\"}}}}}}",
-        "dateRefField": "Data.auditDetails.createdTime"
-      },
-      {
         "module": "OBPS",
         "indexName": "bpa-index",
         "requestQueryMap": "{\"wardId\" : \"Data.ward.name.keyword\",\"tenantId\" : \"Data.tenantId\" \r\n}",
         "aggrQuery": "{ \"aggs\": { \"AGGR\": { \"filter\": { \"bool\": { \"must_not\": [ { \"term\": { \"Data.tenantId.keyword\": \"od.testing\" } } ], \"must\": [ { \"terms\": { \"Data.businessService.keyword\": [\"BPA\",\"BPA_LOW\"] } } ] } }, \"aggs\": { \"Total Application\": { \"value_count\": { \"field\": \"Data.applicationNo.keyword\" } } } } }} ",
         "dateRefField": "Data.@timestamp"
-      },
-      {
-        "module": "BND",
-        "indexName": "birth-cert-v1",
-        "aggrQuery": "{\"aggs\":{\"AGGR\":{\"filter\":{\"bool\":{\"must_not\":[{\"term\":{\"Data.tenantId.keyword\":\"od.testing\"}},{\"terms\":{\"Data.applicationStatus.keyword\":[\"ACTIVE\"]}}]}},\"aggs\":{\"Total Application\":{\"value_count\":{\"field\":\"Data.birthCertificateNo.keyword\"}}}}}}",
-        "requestQueryMap": "{\"wardId\" : \"Data.ward.name.keyword\", \r\n  \"district\" : \"Data.tenantData.city.districtCode\", \r\n\"tenantId\" : \"Data.tenantId.keyword\" \r\n}", 
-        "dateRefField": "Data.dateofissue"
-      },
-      {
-        "module": "BND",
-        "indexName": "death-cert-v1",
-        "aggrQuery": "{\"aggs\":{\"AGGR\":{\"filter\":{\"bool\":{\"must_not\":[{\"term\":{\"Data.tenantId.keyword\":\"od.testing\"}},{\"terms\":{\"Data.applicationStatus.keyword\":[\"ACTIVE\"]}}]}},\"aggs\":{\"Total Application\":{\"value_count\":{\"field\":\"Data.deathCertificateNo.keyword\"}}}}}}",
-        "requestQueryMap": "{\"wardId\" : \"Data.ward.name.keyword\", \r\n  \"district\" : \"Data.tenantData.city.districtCode\", \r\n\"tenantId\" : \"Data.tenantId.keyword\" \r\n}", 
-        "dateRefField": "Data.dateofissue"
       }
     ],
     "chartType": "metric",
@@ -1208,32 +1187,11 @@
         "dateRefField": "Data.@timestamp"
       },
       {
-        "module": "FIRENOC",
-        "indexName": "firenoc-services",
-        "aggrQuery": "{\"aggs\":{\"FireNOC\":{\"filter\":{\"bool\":{\"must_not\":[{\"term\":{\"Data.tenantId.keyword\":\"od.testing\"}}]}},\"aggs\":{\"Fire NOC\":{\"value_count\":{\"field\":\"Data.tenantId.keyword\"}}}}}}",
-        "requestQueryMap": "{\"wardId\" : \"Data.ward.name.keyword\",\"tenantId\" : \"Data.tenantId\", \"district\" : \"Data.tenantData.city.districtCode\"}",
-        "dateRefField": "Data.auditDetails.createdTime"
-      },
-      {
         "module": "OBPS",
         "indexName": "bpa-index",
         "aggrQuery": "{ \"aggs\": { \"AGGR\": { \"filter\": { \"bool\": { \"must_not\": [ { \"term\": { \"Data.tenantId.keyword\": \"od.testing\" } } ], \"must\": [ { \"terms\": { \"Data.businessService.keyword\": [\"BPA\",\"BPA_LOW\"] } } ] } }, \"aggs\": { \"OBPS\": { \"value_count\": { \"field\": \"Data.applicationNo.keyword\" } } } } }} ",
         "requestQueryMap": "{\"wardId\" : \"Data.ward.name.keyword\",\"tenantId\" : \"Data.tenantId\" \r\n}",
         "dateRefField": "Data.@timestamp"
-      },
-      {
-        "module": "BND",
-        "indexName": "birth-cert-v1",
-        "aggrQuery": "{\"aggs\":{\"AGGR\":{\"filter\":{\"bool\":{\"must_not\":[{\"term\":{\"Data.tenantId.keyword\":\"od.testing\"}},{\"terms\":{\"Data.applicationStatus.keyword\":[\"ACTIVE\"]}}]}},\"aggs\":{\"BND\":{\"value_count\":{\"field\":\"Data.birthCertificateNo.keyword\"}}}}}}",
-        "requestQueryMap": "{\"wardId\" : \"Data.ward.name.keyword\", \r\n  \"district\" : \"Data.tenantData.city.districtCode\", \r\n\"tenantId\" : \"Data.tenantId.keyword\" \r\n}", 
-        "dateRefField": "Data.dateofissue"
-      },
-      {
-        "module": "BND",
-        "indexName": "death-cert-v1",
-        "aggrQuery": "{\"aggs\":{\"AGGR\":{\"filter\":{\"bool\":{\"must_not\":[{\"term\":{\"Data.tenantId.keyword\":\"od.testing\"}},{\"terms\":{\"Data.applicationStatus.keyword\":[\"ACTIVE\"]}}]}},\"aggs\":{\"BND\":{\"value_count\":{\"field\":\"Data.deathCertificateNo.keyword\"}}}}}}",
-        "requestQueryMap": "{\"wardId\" : \"Data.ward.name.keyword\", \r\n  \"district\" : \"Data.tenantData.city.districtCode\", \r\n\"tenantId\" : \"Data.tenantId.keyword\" \r\n}", 
-        "dateRefField": "Data.dateofissue"
       }
     ],
     "chartType": "pie",
@@ -1247,9 +1205,7 @@
       "PGR",
       "FSM",
       "W&S",
-      "Fire NOC",
-      "OBPS",
-      "BND"
+      "OBPS"
     ],
     "insight": {
     },
