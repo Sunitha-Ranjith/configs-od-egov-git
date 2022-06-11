@@ -1530,18 +1530,26 @@
     "action": "",
     "plotLabel": "DDRs",
     "aggregationPaths": [
-      "PT Tax",
-      "Fire Cess",
-      "Cancer Cess",
-      "Rebate",
+      "Holding Tax",
+      "Light Tax",
+      "Water Tax",
+      "Service Tax",
+      "Other Dues",
+      "Drainage Tax",
+      "Latrine Tax",
       "Penalty",
-      "Time Interest","Round Off"
+      "Rebate",
+      "Interest",
+      "Parking Tax",
+      "Ownership Exemption",
+      "Solid Waste User Charges",
+      "Usage Exemption"
     ],
     "computedFields": [
       {
         "postAggregationTheory" : "",
         "actionName": "AdditiveComputedField",
-        "fields" : [ "PT Tax", "Fire Cess", "Cancer Cess", "Rebate", "Penalty", "Time Interest","Round Off"],
+        "fields" : [ "Holding Tax","Light Tax","Water Tax","Service Tax","Other Dues","Drainage Tax","Latrine Tax","Penalty","Rebate","Interest","Parking Tax","Ownership Exemption","Solid Waste User Charges","Usage Exemption"],
         "newField" : "Total Amount",
         "_comments": "fields are field names picked from its aggregation query to use post aggregation newField value with given new field name  "
       }
