@@ -7,8 +7,11 @@
         "applicationNo": "applicationNo",
         "additionalDetails": "additionalDetails",
         "propertyUsageType": "propertyUsageType",
-        "applicationStatus":"applicationStatus",
-        "ward":"ward"
+        "ward": "ward",
+        "connectionType":"connectionType",
+        "applicationType":"applicationType",
+        "channel":"channel"
+        "applicationStatus":"applicationStatus"
       }
     }
 ]
