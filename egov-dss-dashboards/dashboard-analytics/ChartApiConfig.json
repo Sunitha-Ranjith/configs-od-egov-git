@@ -7331,7 +7331,7 @@
         "indexName": "dss-collection_v1",
         "aggrQuery": "{\"aggs\":{\"AGGR\":{\"filter\":{\"bool\":{\"must_not\":[{\"term\":{\"dataObject.tenantId.keyword\":\"od.testing\"}},{\"terms\":{\"dataObject.paymentDetails.bill.status.keyword\":[\"Cancelled\"]}}],\"must\":[{\"range\":{\"@timestamp\":{\"gte\":\"now-24h\",\"lte\":\"now\"}}},{ \"terms\": { \"dataObject.paymentDetails.businessService.keyword\": [ \"BPA.LOW_RISK_PERMIT_FEE\",\"BPA.NC_APP_FEE\",\"BPA.NC_SAN_FEE\",\"BPA.NC_OC_APP_FEE\" ] } }]}},\"aggs\":{\"Total Collection\":{\"sum\":{\"field\":\"dataObject.paymentDetails.bill.billDetails.amountPaid\"}}}}}}",
         "requestQueryMap":"{\"wardId\" : \"dataObject.ward.name.keyword\",\"module\" : \"dataObject.paymentDetails.businessService.keyword\",\"tenantId\" : \"dataObject.tenantId\", \"district\" : \"dataObject.tenantData.city.districtCode\" }",
-        "dateRefField": ""
+        "dateRefField": "Data.@timestamp"
       }
     ],
     "chartType": "metric",
@@ -7342,7 +7342,14 @@
       "Today's Collection"
     ],
     "insight": {
-     
+      "chartResponseMap" : "bpaTodaysCollection",
+      "action" : "differenceOfNumbers",
+      "upwardIndicator" : "positive",
+      "downwardIndicator" : "negative",
+      "textMessage" : "$indicator$value% than last $insightInterval",
+      "colorCode" : "#228B22",
+      "insightInterval" : "year",
+      "isRoundOff": true
     },
     "_comment": "BPA Today's collections "
   },
@@ -7712,7 +7719,7 @@
     "queries": [
       {
         "module": "OBPS",
-        "dateRefField": "Data.@timestamp",
+        "dateRefField": "Data.applicationDate",
         "requestQueryMap": "{\"wardId\" : \"Data.ward.name.keyword\",\"tenantId\" : \"Data.tenantId\" \r\n}",
         "indexName": "bpa-index",
         "aggrQuery": "{\"aggs\":{\"AGGR\":{\"filter\":{\"bool\":{\"must_not\":[{\"term\":{\"Data.tenantId.keyword\":\"od.testing\"}}],\"must\":[{\"term\":{\"Data.status.keyword\":\"APPROVED\"}},{\"terms\":{\"Data.businessService.keyword\":[\"BPA1\",\"BPA2\",\"BPA3\",\"BPA4\",\"BPA5\",\"BPA6\",\"BPA7\",\"BPA8\",\"BPA9\",\"BPA10\"]}}]}},\"aggs\":{\"PermitsIssued By OccupancyType\":{\"terms\":{\"field\":\"Data.landInfo.unit.occupancyType.keyword\"},\"aggs\":{\"Count\":{\"value_count\":{\"field\":\"Data.landInfo.unit.occupancyType.keyword\"}}}}}}}}"
