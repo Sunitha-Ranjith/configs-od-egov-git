@@ -4090,14 +4090,6 @@
                   "chartType": "metric",
                   "filter": "",
                   "headers": []
-                },
-                {
-                  "id": "wsActiveSewerageConnection",
-                  "name": "DSS_WS_ACTIVE_SEWERAGE_CONNECTIONS",
-                  "code": "",
-                  "chartType": "metric",
-                  "filter": "",
-                  "headers": []
                 }
               ]
             },
@@ -4141,28 +4133,6 @@
               "charts": [
                 {
                   "id": "wsWaterConsumersByUsageType",
-                  "name": "",
-                  "code": "",
-                  "chartType": "donut",
-                  "filter": "",
-                  "headers": []
-                }
-              ]
-            },
-            {
-              "id": 232,
-              "name": "DSS_W&S_SEWERAGE_CONNECTION_BY_USAGE",
-              "dimensions": {
-                "height": 350,
-                "width": 12
-              },
-              "vizType": "chart",
-              "label": "",
-              "noUnit": false,
-              "isCollapsible": true,
-              "charts": [
-                {
-                  "id": "wsSewerageConsumersByUsageType",
                   "name": "",
                   "code": "",
                   "chartType": "donut",
@@ -4515,14 +4485,6 @@
                   "chartType": "metric",
                   "filter": "",
                   "headers": []
-                },
-                {
-                  "id": "wsActiveSewerageConnection",
-                  "name": "DSS_WS_ACTIVE_SEWERAGE_CONNECTIONS",
-                  "code": "",
-                  "chartType": "metric",
-                  "filter": "",
-                  "headers": []
                 }
               ]
             },
@@ -4566,28 +4528,6 @@
               "charts": [
                 {
                   "id": "wsWaterConsumersByUsageType",
-                  "name": "",
-                  "code": "",
-                  "chartType": "donut",
-                  "filter": "",
-                  "headers": []
-                }
-              ]
-            },
-            {
-              "id": 232,
-              "name": "DSS_W&S_SEWERAGE_CONNECTION_BY_USAGE",
-              "dimensions": {
-                "height": 350,
-                "width": 12
-              },
-              "vizType": "chart",
-              "label": "",
-              "noUnit": false,
-              "isCollapsible": true,
-              "charts": [
-                {
-                  "id": "wsSewerageConsumersByUsageType",
                   "name": "",
                   "code": "",
                   "chartType": "donut",
