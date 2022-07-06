@@ -3618,7 +3618,7 @@
   "_comment": "WS charts below-----------------------------------------------------------------------",
 
   "wstodaysCollection": {
-    "chartName": "DSS_W&S_TODAYS_COLLECTION",
+    "chartName": "DSS_WS_TODAYS_COLLECTION",
     "queries": [
       {
         "module": "WS",
@@ -3637,10 +3637,10 @@
     ],
     "insight": {
     },
-    "_comment": "W&S todays collections "
+    "_comment": "WS todays collections "
   },
   "wstotalCollection": {
-    "chartName": "DSS_W&S_TOTAL_COLLECTION",
+    "chartName": "DSS_WS_TOTAL_COLLECTION",
     "queries": [
       {
         "module": "WS",
@@ -3668,10 +3668,10 @@
       "insightInterval" : "year",
       "isRoundOff": true
     },
-    "_comment": "W&S total collections "
+    "_comment": "WS total collections "
   },
   "wstargetCollection": {
-    "chartName": "DSS_W&S_TARGET_COLLECTION",
+    "chartName": "DSS_WS_TARGET_COLLECTION",
     "queries": [
       {
         "module": "WS",
@@ -3704,7 +3704,7 @@
     "_comment": " "
   },
   "wstargetAchieved": {
-    "chartName": "DSS_W&S_TARGET_ACHIEVED",
+    "chartName": "DSS_WS_TARGET_ACHIEVED",
     "queries": [
       {
         "module": "WS",
@@ -3748,7 +3748,7 @@
     "_comment": " "
   },
   "wscumulativeCollections": {
-    "chartName": "DSS_W&S_TOTAL_CUMULATIVE_COLLECTION",
+    "chartName": "DSS_WS_TOTAL_CUMULATIVE_COLLECTION",
     "queries": [
       {
         "module": "WS",
@@ -3775,7 +3775,7 @@
   },
 
   "wstopPerformingUlbs": {
-    "chartName": "DSS_W&S_TOP_3_PERFORMING_ULBS",
+    "chartName": "DSS_WS_TOP_3_PERFORMING_ULBS",
     "queries": [
       {
         "module": "WS",
@@ -3813,7 +3813,7 @@
     "_comment": " Top Performing Ulbs for target achieved"
   },
   "wsbottomPerformingUlbs": {
-    "chartName": "DSS_W&S_BOTTOM_3_PERFORMING_ULBS",
+    "chartName": "DSS_WS_BOTTOM_3_PERFORMING_ULBS",
     "queries": [
       {
         "module": "WS",
@@ -3851,7 +3851,7 @@
     "_comment": " Bottom Performing Ulbs for target achieved"
   },
   "wscollectionByUsage": {
-    "chartName": "DSS_W&S_COLLECTION_BY_USAGE",
+    "chartName": "DSS_WS_COLLECTION_BY_USAGE",
     "queries": [
       {
         "module": "WS",
@@ -3876,7 +3876,7 @@
   },
 
   "wscollectionByChannel": {
-    "chartName": "DSS_W&S_COLLECTION_BY_CHANNEL",
+    "chartName": "DSS_WS_COLLECTION_BY_CHANNEL",
     "queries": [
       {
         "module": "WS",
@@ -3985,7 +3985,7 @@
     "_comment": ""
   },
   "wsFinancialIndicatorUlb": {
-    "chartName": "DSS_W&S_DEMAND_COLLECTION_BOUNDARY",
+    "chartName": "DSS_WS_DEMAND_COLLECTION_BOUNDARY",
     "queries": [
       {
         "module": "COMMON",
@@ -4113,7 +4113,7 @@
   },
 
   "wsTaxHeadDDR": {
-    "chartName": "DSS_W&S_TAX_HEAD_BOUNDARY",
+    "chartName": "DSS_WS_TAX_HEAD_BOUNDARY",
     "queries": [
       {
         "module": "WS",
@@ -4179,7 +4179,7 @@
     "_comment": ""
   },
   "wsTaxHeadUlb": {
-    "chartName": "DSS_W&S_TAX_HEAD_BOUNDARY",
+    "chartName": "DSS_WS_TAX_HEAD_BOUNDARY",
     "queries": [
       {
         "module": "WS",
@@ -4349,7 +4349,7 @@
     "_comment": " "
   },
   "wsActiveUlbs": {
-    "chartName": "DSS_W&S_ACTIVE_ULBS",
+    "chartName": "DSS_WS_ACTIVE_ULBS",
     "queries": [
       {
         "module": "WS",
@@ -4372,7 +4372,7 @@
     "_comment": " "
   },
   "wsNewWaterConnection": {
-    "chartName": "DSS_W&S_WATER_CONNECTIONS",
+    "chartName": "DSS_WS_WATER_CONNECTIONS",
     "queries": [
       {
         "module": "WS",
@@ -4395,7 +4395,7 @@
     "_comment": " "
   },
   "wsNewSewerageConnection": {
-    "chartName": "DSS_W&S_SEWERAGE_CONNECTIONS",
+    "chartName": "DSS_WS_SEWERAGE_CONNECTIONS",
     "queries": [
       {
         "module": "WS",
@@ -4547,7 +4547,7 @@
     "_comment": "active non-metered water connections"
   },
     "wscumulativeCollectionsv2": {
-    "chartName": "DSS_W&S_CUMULATIVE_COLLECTION",
+    "chartName": "DSS_WS_CUMULATIVE_COLLECTION",
     "queries": [
       {
         "module": "WS",
@@ -4574,7 +4574,7 @@
   },
   
   "wscumulativeConnections": {
-    "chartName": "DSS_W&S_CUMULATIVE_CONNECTION",
+    "chartName": "DSS_WS_CUMULATIVE_CONNECTION",
     "queries": [
       {
         "module": "WS",
@@ -4601,7 +4601,7 @@
   },
 
   "wsWaterConsumersByUsageType": {
-    "chartName": "DSS_W&S_WATER_CONNECTION_BY_USAGE",
+    "chartName": "DSS_WS_WATER_CONNECTION_BY_USAGE",
     "queries": [
       {
         "module": "WS",
@@ -4625,7 +4625,7 @@
     "_comment": " "
   },
   "wsConsumersByChannel": {
-    "chartName": "DSS_W&S_CONNECTION_BY_CHANNEL",
+    "chartName": "DSS_WS_CONNECTION_BY_CHANNEL",
     "queries": [
       {
         "module": "WS",
@@ -4650,7 +4650,7 @@
   },
 
   "wsConnectionAgeingDDR": {
-    "chartName": "DSS_W&S_CONNECTION_AGEING",
+    "chartName": "DSS_WS_CONNECTION_AGEING",
     "queries": [
       {
         "module": "WS",
@@ -4691,7 +4691,7 @@
     "_comment": ""
   },
   "wsConnectionAgeingUlb": {
-    "chartName": "DSS_W&S_CONNECTION_AGEING",
+    "chartName": "DSS_WS_CONNECTION_AGEING",
     "queries": [
       {
         "module": "WS",
@@ -6844,7 +6844,7 @@
   },
 
   "wsXBoundaryTargetAchievment": {
-    "chartName": "DSS_W&S_DEMAND_COLLECTION_BOUNDARY",
+    "chartName": "DSS_WS_DEMAND_COLLECTION_BOUNDARY",
     "queries": [
       {
         "module": "COMMON",
@@ -10637,7 +10637,7 @@
       ],
       "insight": {
       },
-      "_comment": " NSS W&S today's collections"
+      "_comment": " NSS WS today's collections"
     },
     
    "nssWsTotalCollection": {
@@ -10669,7 +10669,7 @@
         "insightInterval" : "year",
         "isRoundOff": true
       },
-      "_comment": "W&S total collections "
+      "_comment": "WS total collections "
     }, 
     
     "nssWsTargetCollection": {
@@ -10703,7 +10703,7 @@
         "insightInterval" : "year",
         "isRoundOff": true
       },
-      "_comment": "NSS W&S Target Collection "
+      "_comment": "NSS WS Target Collection "
     },
 
     "nssWsTargetAchieved": {
@@ -16039,7 +16039,7 @@
   },
 
   "wstotalConnectionOverview": {
-    "chartName": "DSS_W&S_ACTIVE_CONNECTIONS",
+    "chartName": "DSS_WS_ACTIVE_CONNECTIONS",
     "queries": [
       {
         "module": "WS",
