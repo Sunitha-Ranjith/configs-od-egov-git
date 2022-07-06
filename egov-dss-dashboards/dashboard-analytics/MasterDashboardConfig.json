@@ -2226,7 +2226,7 @@
               "id": 142,
               "name": "DSS_WATER_SEWERAGE",
               "vizType": "module",
-              "moduleLevel": "W&S",
+              "moduleLevel": "WS",
               "ref": {
                 "url": "ws",
                 "logoUrl": "",
@@ -2244,7 +2244,7 @@
                 },
                 {
                   "id": "wstotalConnectionOverview",
-                  "name": "DSS_W&S_ACTIVE_CONNECTIONS",
+                  "name": "DSS_WS_ACTIVE_CONNECTIONS",
                   "code": "",
                   "chartType": "metric",
                   "filter": "",
@@ -3803,7 +3803,7 @@
     },
 
     {
-      "name": "DSS_W&S_DASHBOARD",
+      "name": "DSS_WS_DASHBOARD",
       "id": "ws",
       "isActive": "",
       "style": "linear",
@@ -3826,7 +3826,7 @@
               "charts": [
                 {
                   "id": "wstodaysCollection",
-                  "name": "DSS_W&S_TODAYS_COLLECTION",
+                  "name": "DSS_WS_TODAYS_COLLECTION",
                   "code": "",
                   "chartType": "metric",
                   "filter": {"title": "TODAY"},
@@ -3834,7 +3834,7 @@
                 },
                 {
                   "id": "wstotalCollection",
-                  "name": "DSS_W&S_TOTAL_COLLECTION",
+                  "name": "DSS_WS_TOTAL_COLLECTION",
                   "code": "",
                   "chartType": "metric",
                   "filter": "",
@@ -3842,7 +3842,7 @@
                 },
                 {
                   "id": "wstargetCollection",
-                  "name": "DSS_W&S_TARGET_COLLECTION",
+                  "name": "DSS_WS_TARGET_COLLECTION",
                   "code": "",
                   "chartType": "metric",
                   "filter": "",
@@ -3850,7 +3850,7 @@
                 },
                 {
                   "id": "wstargetAchieved",
-                  "name": "DSS_W&S_TARGET_ACHIEVED",
+                  "name": "DSS_WS_TARGET_ACHIEVED",
                   "code": "",
                   "chartType": "metric",
                   "filter": "",
@@ -3860,7 +3860,7 @@
             },
             {
               "id": 212,
-              "name": "DSS_W&S_TOTAL_CUMULATIVE_COLLECTION",
+              "name": "DSS_WS_TOTAL_CUMULATIVE_COLLECTION",
               "dimensions": {
                 "height": 350,
                 "width": 7
@@ -3887,7 +3887,7 @@
           "vizArray": [
             {
               "id": 221,
-              "name": "DSS_W&S_TOP_3_PERFORMING_ULBS",
+              "name": "DSS_WS_TOP_3_PERFORMING_ULBS",
               "dimensions": {
                 "height": 250,
                 "width": 4
@@ -3899,7 +3899,7 @@
               "charts": [
                 {
                   "id": "wstopPerformingUlbs",
-                  "name": "DSS_W&S_TOP_3_PERFORMING_ULBS",
+                  "name": "DSS_WS_TOP_3_PERFORMING_ULBS",
                   "code": "",
                   "chartType": "bar",
                   "filter": "",
@@ -3909,7 +3909,7 @@
             },
             {
               "id": 222,
-              "name": "DSS_W&S_BOTTOM_3_PERFORMING_ULBS",
+              "name": "DSS_WS_BOTTOM_3_PERFORMING_ULBS",
               "dimensions": {
                 "height": 250,
                 "width": 4
@@ -3920,7 +3920,7 @@
               "charts": [
                 {
                   "id": "wsbottomPerformingUlbs",
-                  "name": "DSS_W&S_BOTTOM_3_PERFORMING_ULBS",
+                  "name": "DSS_WS_BOTTOM_3_PERFORMING_ULBS",
                   "code": "",
                   "chartType": "bar",
                   "filter": "",
@@ -3936,7 +3936,7 @@
           "vizArray": [
             {
               "id": 223,
-              "name": "DSS_W&S_COLLECTION_BY_USAGE",
+              "name": "DSS_WS_COLLECTION_BY_USAGE",
               "dimensions": {
                 "height": 250,
                 "width": 4
@@ -3947,7 +3947,7 @@
               "charts": [
                 {
                   "id": "wscollectionByUsage",
-                  "name": "DSS_W&S_COLLECTION_BY_USAGE",
+                  "name": "DSS_WS_COLLECTION_BY_USAGE",
                   "code": "",
                   "chartType": "donut",
                   "filter": "",
@@ -3957,7 +3957,7 @@
             },
             {
               "id": 224,
-              "name": "DSS_W&S_COLLECTION_BY_CHANNEL",
+              "name": "DSS_WS_COLLECTION_BY_CHANNEL",
               "dimensions": {
                 "height": 250,
                 "width": 4
@@ -3968,7 +3968,7 @@
               "charts": [
                 {
                   "id": "wscollectionByChannel",
-                  "name": "DSS_W&S_COLLECTION_BY_CHANNEL",
+                  "name": "DSS_WS_COLLECTION_BY_CHANNEL",
                   "code": "",
                   "chartType": "donut",
                   "filter": "",
@@ -3995,7 +3995,7 @@
               "charts": [
                 {
                   "id": "wsFinancialIndicatorDDR",
-                  "name": "DSS_W&S_DEMAND_COLLECTION_BOUNDARY",
+                  "name": "DSS_WS_DEMAND_COLLECTION_BOUNDARY",
                   "code": "",
                   "chartType": "table",
                   "filter": "",
@@ -4012,7 +4012,7 @@
           "vizArray": [
             {
               "id": 231,
-              "name": "DSS_W&S_TAX_HEAD_BOUNDARY",
+              "name": "DSS_WS_TAX_HEAD_BOUNDARY",
               "dimensions": {
                 "height": 350,
                 "width": 12
@@ -4024,7 +4024,7 @@
               "charts": [
                 {
                   "id": "wsTaxHeadDDR",
-                  "name": "DSS_W&S_TAX_HEAD_BOUNDARY",
+                  "name": "DSS_WS_TAX_HEAD_BOUNDARY",
                   "code": "",
                   "chartType": "table",
                   "filter": "",
@@ -4095,7 +4095,7 @@
             },
             {
               "id": 232,
-              "name": "DSS_W&S_CUMULATIVE_CONNECTION",
+              "name": "DSS_WS_CUMULATIVE_CONNECTION",
               "dimensions": {
                 "height": 350,
                 "width": 7
@@ -4121,7 +4121,7 @@
           "vizArray": [
             {
               "id": 231,
-              "name": "DSS_W&S_WATER_CONNECTION_BY_USAGE",
+              "name": "DSS_WS_WATER_CONNECTION_BY_USAGE",
               "dimensions": {
                 "height": 350,
                 "width": 12
@@ -4143,7 +4143,7 @@
             },
             {
               "id": 233,
-              "name": "DSS_W&S_CONNECTION_BY_CHANNEL",
+              "name": "DSS_WS_CONNECTION_BY_CHANNEL",
               "dimensions": {
                 "height": 350,
                 "width": 12
@@ -4171,7 +4171,7 @@
           "vizArray": [
             {
               "id": 231,
-              "name": "DSS_W&S_CONNECTION_AGEING",
+              "name": "DSS_WS_CONNECTION_AGEING",
               "dimensions": {
                 "height": 350,
                 "width": 12
@@ -4183,7 +4183,7 @@
               "charts": [
                 {
                   "id": "wsConnectionAgeingDDR",
-                  "name": "DSS_W&S_CONNECTION_AGEING",
+                  "name": "DSS_WS_CONNECTION_AGEING",
                   "code": "",
                   "chartType": "table",
                   "filter": "",
@@ -4198,7 +4198,7 @@
       ]
     },
     {
-      "name": "DSS_W&S_DASHBOARD",
+      "name": "DSS_WS_DASHBOARD",
       "id": "ulb-ws",
       "isActive": "",
       "style": "linear",
@@ -4221,7 +4221,7 @@
               "charts": [
                 {
                   "id": "wstodaysCollection",
-                  "name": "DSS_W&S_TODAYS_COLLECTION",
+                  "name": "DSS_WS_TODAYS_COLLECTION",
                   "code": "",
                   "chartType": "metric",
                   "filter": {"title": "TODAY"},
@@ -4229,7 +4229,7 @@
                 },
                 {
                   "id": "wstotalCollection",
-                  "name": "DSS_W&S_TOTAL_COLLECTION",
+                  "name": "DSS_WS_TOTAL_COLLECTION",
                   "code": "",
                   "chartType": "metric",
                   "filter": "",
@@ -4237,7 +4237,7 @@
                 },
                 {
                   "id": "wstargetCollection",
-                  "name": "DSS_W&S_TARGET_COLLECTION",
+                  "name": "DSS_WS_TARGET_COLLECTION",
                   "code": "",
                   "chartType": "metric",
                   "filter": "",
@@ -4245,7 +4245,7 @@
                 },
                 {
                   "id": "wstargetAchieved",
-                  "name": "DSS_W&S_TARGET_ACHIEVED",
+                  "name": "DSS_WS_TARGET_ACHIEVED",
                   "code": "",
                   "chartType": "metric",
                   "filter": "",
@@ -4255,7 +4255,7 @@
             },
             {
               "id": 212,
-              "name": "DSS_W&S_TOTAL_CUMULATIVE_COLLECTION",
+              "name": "DSS_WS_TOTAL_CUMULATIVE_COLLECTION",
               "dimensions": {
                 "height": 350,
                 "width": 7
@@ -4282,7 +4282,7 @@
           "vizArray": [
             {
               "id": 221,
-              "name": "DSS_W&S_TOP_3_PERFORMING_ULBS",
+              "name": "DSS_WS_TOP_3_PERFORMING_ULBS",
               "dimensions": {
                 "height": 250,
                 "width": 4
@@ -4294,7 +4294,7 @@
               "charts": [
                 {
                   "id": "wstopPerformingUlbs",
-                  "name": "DSS_W&S_TOP_3_PERFORMING_ULBS",
+                  "name": "DSS_WS_TOP_3_PERFORMING_ULBS",
                   "code": "",
                   "chartType": "bar",
                   "filter": "",
@@ -4304,7 +4304,7 @@
             },
             {
               "id": 222,
-              "name": "DSS_W&S_BOTTOM_3_PERFORMING_ULBS",
+              "name": "DSS_WS_BOTTOM_3_PERFORMING_ULBS",
               "dimensions": {
                 "height": 250,
                 "width": 4
@@ -4315,7 +4315,7 @@
               "charts": [
                 {
                   "id": "wsbottomPerformingUlbs",
-                  "name": "DSS_W&S_BOTTOM_3_PERFORMING_ULBS",
+                  "name": "DSS_WS_BOTTOM_3_PERFORMING_ULBS",
                   "code": "",
                   "chartType": "bar",
                   "filter": "",
@@ -4331,7 +4331,7 @@
           "vizArray": [
             {
               "id": 223,
-              "name": "DSS_W&S_COLLECTION_BY_USAGE",
+              "name": "DSS_WS_COLLECTION_BY_USAGE",
               "dimensions": {
                 "height": 250,
                 "width": 4
@@ -4342,7 +4342,7 @@
               "charts": [
                 {
                   "id": "wscollectionByUsage",
-                  "name": "DSS_W&S_COLLECTION_BY_USAGE",
+                  "name": "DSS_WS_COLLECTION_BY_USAGE",
                   "code": "",
                   "chartType": "donut",
                   "filter": "",
@@ -4352,7 +4352,7 @@
             },
             {
               "id": 224,
-              "name": "DSS_W&S_COLLECTION_BY_CHANNEL",
+              "name": "DSS_WS_COLLECTION_BY_CHANNEL",
               "dimensions": {
                 "height": 250,
                 "width": 4
@@ -4363,7 +4363,7 @@
               "charts": [
                 {
                   "id": "wscollectionByChannel",
-                  "name": "DSS_W&S_COLLECTION_BY_CHANNEL",
+                  "name": "DSS_WS_COLLECTION_BY_CHANNEL",
                   "code": "",
                   "chartType": "donut",
                   "filter": "",
@@ -4390,7 +4390,7 @@
               "charts": [
                 {
                   "id": "wsFinancialIndicatorDDR",
-                  "name": "DSS_W&S_DEMAND_COLLECTION_BOUNDARY",
+                  "name": "DSS_WS_DEMAND_COLLECTION_BOUNDARY",
                   "code": "",
                   "chartType": "table",
                   "filter": "",
@@ -4407,7 +4407,7 @@
           "vizArray": [
             {
               "id": 231,
-              "name": "DSS_W&S_TAX_HEAD_BOUNDARY",
+              "name": "DSS_WS_TAX_HEAD_BOUNDARY",
               "dimensions": {
                 "height": 350,
                 "width": 12
@@ -4419,7 +4419,7 @@
               "charts": [
                 {
                   "id": "wsTaxHeadDDR",
-                  "name": "DSS_W&S_TAX_HEAD_BOUNDARY",
+                  "name": "DSS_WS_TAX_HEAD_BOUNDARY",
                   "code": "",
                   "chartType": "table",
                   "filter": "",
@@ -4490,7 +4490,7 @@
             },
             {
               "id": 232,
-              "name": "DSS_W&S_CUMULATIVE_CONNECTION",
+              "name": "DSS_WS_CUMULATIVE_CONNECTION",
               "dimensions": {
                 "height": 350,
                 "width": 7
@@ -4516,7 +4516,7 @@
           "vizArray": [
             {
               "id": 231,
-              "name": "DSS_W&S_WATER_CONNECTION_BY_USAGE",
+              "name": "DSS_WS_WATER_CONNECTION_BY_USAGE",
               "dimensions": {
                 "height": 350,
                 "width": 12
@@ -4538,7 +4538,7 @@
             },
             {
               "id": 233,
-              "name": "DSS_W&S_CONNECTION_BY_CHANNEL",
+              "name": "DSS_WS_CONNECTION_BY_CHANNEL",
               "dimensions": {
                 "height": 350,
                 "width": 12
@@ -4566,7 +4566,7 @@
           "vizArray": [
             {
               "id": 231,
-              "name": "DSS_W&S_CONNECTION_AGEING",
+              "name": "DSS_WS_CONNECTION_AGEING",
               "dimensions": {
                 "height": 350,
                 "width": 12
@@ -4578,7 +4578,7 @@
               "charts": [
                 {
                   "id": "wsConnectionAgeingDDR",
-                  "name": "DSS_W&S_CONNECTION_AGEING",
+                  "name": "DSS_WS_CONNECTION_AGEING",
                   "code": "",
                   "chartType": "table",
                   "filter": "",
